@@ -1,25 +1,22 @@
-# Dairy exposome atlas analysis code
+# Dairy Exposome Atlas Code
 
-This directory contains the analysis scripts used to reproduce the statistics and figures for the dairy exposome atlas manuscript. The scripts are organized by manuscript analysis point and are written to be run from within the full project directory structure.
 
-## Directory structure
+## Structure
 
-- `1/scripts`: exposure-wide association screening, endpoint comparison, robustness analyses and sparse-event checks.
-- `2/scripts`: exposure-burden trajectories, exposure-to-loss translation, lagged humid- and dry-heat profiles and breed-background buffering analyses.
-- `4/scripts`: annual single-exposure incremental R2, top-five aggregate annual models and exposure co-occurrence networks.
-- `5/scripts`: regional rolling ridge models for next-month milk-loss-risk forecasting and permutation-based exposure-variable importance.
-- `6/scripts`: state-level forecasting summaries and state-level domain-importance maps using the Point 5 forecasting framework.
+- `1/`: endpoint ExWAS for total milk production and milk production per cow.
+- `2/`: yearly exposure-association trends for milk production per cow.
+- `3/`: rolling-origin milk-per-cow forecasting, SHAP attribution and random-forest robustness.
+- `4/`: state-class exposure priority indices and maps.
+- `lib_statistics_panel.py`: shared panel assembly and fixed-effect regression utilities.
 
-## Data inputs
+## Methods Implemented
 
-The scripts assume the project root contains the processed phenotype and exposure tables used in the manuscript, including:
+The endpoint ExWAS uses log outcomes, standardized numeric exposures, state and year-month fixed effects, milk-cow-inventory weights, state-clustered uncertainty and BY-FDR/Bonferroni correction across 204 curated exposures. Sensitivity and robustness analyses include state-specific trends, unweighted models, leave-one-state-out refitting, GAM, GEE and residualized rexposome ExWAS.
 
-- `data/us_milk/tables/analysis_1_2_4_state_month_milk_phenotypes.csv`
-- `data/us_milk/processed/genomics/analysis_1_2_4_state_year_breed_genetic_context.csv`
-- `data/us_expose_new/processed/exposure_state_month_expanded.csv`
-- `data/us_expose_new/suppl_data/supplementary_data_2_clean_curated_macro_exposome_exwas_variables.xlsx`
-- analysis outputs from preceding points when a later point depends on them, especially the Point 4 nonredundant exposure dictionary.
+The yearly analysis estimates exposure-by-year standardized beta coefficients for milk production per cow, with sensitivity/robustness checks using FE + year-month, FE + exposure-by-year trend, LOSO, GAM, GEE and LME models.
 
-## Software
+Forecasting compares history-only and exposome-enhanced rolling-origin models for 1- to 12-month-ahead milk production per cow. Priority maps combine recent standardized beta, adjusted incremental R2 and 1- to 9-month SHAP attribution into state-normalized class priority shares.
 
-Analyses were run with Python 3.11 and R 4.3. Python packages include NumPy, pandas, SciPy, matplotlib, NetworkX and Bokeh. R packages include ggplot2, dplyr, readr, tidyr, patchwork, ggrepel, scales and tibble.
+## Environment
+
+Python and R package versions used for manuscript analyses are listed in `requirements.txt` and `R-packages.txt`.
