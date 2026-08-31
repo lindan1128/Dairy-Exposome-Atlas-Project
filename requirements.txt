@@ -1,0 +1,9 @@
+numpy==2.0.2
+pandas
+scipy==1.13.1
+scikit-learn==1.6.1
+shap==0.49.1
+matplotlib==3.9.4
+seaborn
+bokeh
+networkx

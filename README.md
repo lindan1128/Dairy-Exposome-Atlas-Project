@@ -1,5 +1,6 @@
 # Dairy Exposome Atlas Code
 
+This folder contains the manuscript-facing analysis code for the US dairy exposome atlas. Scripts are organized by study point and follow the Methods in `papers/NS/MS.docx`.
 
 ## Structure
 
