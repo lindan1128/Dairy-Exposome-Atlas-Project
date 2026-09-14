@@ -4,11 +4,14 @@ This folder contains the manuscript-facing analysis code for the US dairy exposo
 
 ## Structure
 
-- `1/`: endpoint ExWAS for total milk production and milk production per cow.
-- `2/`: yearly exposure-association trends for milk production per cow.
-- `3/`: rolling-origin milk-per-cow forecasting, SHAP attribution and random-forest robustness.
-- `4/`: state-class exposure priority indices and maps.
-- `lib_statistics_panel.py`: shared panel assembly and fixed-effect regression utilities.
+    github/
+    ├── 1/scripts/  # Endpoint ExWAS: exwas.py, run.py
+    ├── 2/scripts/  # Yearly association trends: temporal.py, run.py
+    ├── 3/scripts/  # HGB/RF forecasting and SHAP: forecast.py, run.py
+    ├── 4/scripts/  # State-class priorities: priority.py, run.py
+    ├── common.py, prepare.py, robustness.R  # Shared methods
+    ├── run.py      # Shared dispatcher, also used by section entry points
+    └── tests/
 
 ## Methods Implemented
 
